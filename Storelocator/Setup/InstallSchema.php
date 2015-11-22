@@ -9,7 +9,6 @@ use Magento\Framework\Setup\InstallSchemaInterface;
 use Magento\Framework\Setup\ModuleContextInterface;
 use Magento\Framework\Setup\SchemaSetupInterface;
 use Magento\Framework\DB\Ddl\Table;
-use Magento\Framework\DB\Adapter\AdapterInterface;
 
 /**
  * @codeCoverageIgnore
@@ -24,13 +23,14 @@ class InstallSchema implements InstallSchemaInterface
     {
         $installer = $setup;
         $installer->startSetup();
+
         if (!$installer->tableExists('fastgento_locator')) {
              $table = $installer->getConnection()->newTable(
                  $installer->getTable('fastgento_locator')
              );
              $table->addColumn(
                  'id',
-                 Table::TYPE_INTEGER,
+                 \Magento\Framework\DB\Ddl\Table::TYPE_SMALLINT,
                  null,
                  [
                      'identity' => true,
@@ -38,12 +38,12 @@ class InstallSchema implements InstallSchemaInterface
                      'nullable' => false,
                      'primary' => true
                  ], 'Location ID')
-                 ->addColumn('name', Table::TYPE_TEXT, 255, ['nullable'  => false,], 'Location Name')
-                 ->addColumn('longitude', Table::TYPE_FLOAT, null, [], 'Longitude')
-                 ->addColumn('latitude', Table::TYPE_FLOAT, null, [], 'Latitude')
-                 ->addColumn('description', Table::TYPE_TEXT, null, [], 'Description');
+                 ->addColumn('name', \Magento\Framework\DB\Ddl\Table::TYPE_TEXT, 255, ['nullable'  => false,], 'Location Name')
+                 ->addColumn('longitude', \Magento\Framework\DB\Ddl\Table::TYPE_FLOAT, null, [], 'Longitude')
+                 ->addColumn('latitude', \Magento\Framework\DB\Ddl\Table::TYPE_FLOAT, null, [], 'Latitude')
+                 ->addColumn('description', \Magento\Framework\DB\Ddl\Table::TYPE_TEXT, null, [], 'Description');
+            $installer->getConnection()->createTable($table);
         }
-        $installer->getConnection()->createTable($table);
 
         /**
          * Create table 'cms_block_store'
@@ -69,10 +69,10 @@ class InstallSchema implements InstallSchemaInterface
             $installer->getFkName('fastgento_locator_store', 'location_id', 'fastgento_locator', 'id'),
             'location_id',
             $installer->getTable('fastgento_locator'),
-            'location_id',
+            'id',
             \Magento\Framework\DB\Ddl\Table::ACTION_CASCADE
         )->addForeignKey(
-            $installer->getFkName('fastgento_locator_store', 'location_id', 'store', 'store_id'),
+            $installer->getFkName('fastgento_locator_store', 'store_id', 'store', 'store_id'),
             'store_id',
             $installer->getTable('store'),
             'store_id',

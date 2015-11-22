@@ -6,7 +6,7 @@ namespace Fastgento\Storelocator\Model\Location;
  *
  * @package Fastgento\Storelocator\Model\Location
  */
-class Collection extends \Magento\Framework\Model\Resource\Db\Collection\AbstractCollection
+class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection
 {
     protected function _construct()
     {

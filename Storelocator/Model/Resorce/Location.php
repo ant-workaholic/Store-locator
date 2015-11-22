@@ -6,7 +6,7 @@ namespace Fastgento\Storelocator\Model\Resource;
  *
  * @package Fastgento\Storelocator\Model\Resource
  */
-class Location extends \Magento\Framework\Model\Resource\Db\AbstractDb
+class Location extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
 {
     /**
      * Resource initialization
