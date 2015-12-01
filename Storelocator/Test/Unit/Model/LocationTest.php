@@ -10,7 +10,7 @@ namespace Fastgento\Storelocator\Test\Unit\Model;
 class LocationTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * @var \Magento\Cms\Model\Page|\PHPUnit_Framework_MockObject_MockObject
+     * @var \Fastgento\Storelocator\Model\Location|\PHPUnit_Framework_MockObject_MockObject
      */
     protected $thisMock;
 
@@ -20,9 +20,9 @@ class LocationTest extends PHPUnit_Framework_TestCase
     protected $context;
 
     /**
-     * @var \Magento\Cms\Model\Resource\Page|\PHPUnit_Framework_MockObject_MockObject
+     * @var \Fastgento\Storelocator\Model\Resource\Location|\PHPUnit_Framework_MockObject_MockObject
      */
-    protected $resourcePageMock;
+    protected $resourceLocationMock;
 
     /**
      * @var \Magento\Framework\Event\ManagerInterface|\PHPUnit_Framework_MockObject_MockObject
@@ -43,7 +43,7 @@ class LocationTest extends PHPUnit_Framework_TestCase
             ]
         );
 
-        $this->resourcePageMock = $this->getMockBuilder('Fastgento\Storelocator\Model\Resource\Location')
+        $this->resourceLocationMock = $this->getMockBuilder('Fastgento\Storelocator\Model\Resource\Location')
             ->disableOriginalConstructor()
             ->setMethods(
                 [
