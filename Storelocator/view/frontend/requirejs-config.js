@@ -6,7 +6,7 @@
 var config = {
     map: {
         '*': {
-            mapGoogle: 'Fastgento_Storelocator/js/map',
+            mapGoogle: 'Fastgento_Storelocator/js/mapGoogle',
             google:    'https://maps.googleapis.com/maps/api/js'
         }
     }

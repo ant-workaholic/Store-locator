@@ -32,13 +32,9 @@ class InstallSchema implements InstallSchemaInterface
                  'id',
                  \Magento\Framework\DB\Ddl\Table::TYPE_SMALLINT,
                  null,
-                 [
-                     'identity' => true,
-                     'unsigned' => true,
-                     'nullable' => false,
-                     'primary' => true
-                 ], 'Location ID')
-                 ->addColumn('name', \Magento\Framework\DB\Ddl\Table::TYPE_TEXT, 255, ['nullable'  => false,], 'Location Name')
+                 ['identity' => true, 'nullable' => false, 'primary' => true],
+                 'Location ID'
+             )->addColumn('name', \Magento\Framework\DB\Ddl\Table::TYPE_TEXT, 255, ['nullable'  => false,], 'Location Name')
                  ->addColumn('longitude', \Magento\Framework\DB\Ddl\Table::TYPE_FLOAT, null, [], 'Longitude')
                  ->addColumn('latitude', \Magento\Framework\DB\Ddl\Table::TYPE_FLOAT, null, [], 'Latitude')
                  ->addColumn('description', \Magento\Framework\DB\Ddl\Table::TYPE_TEXT, null, [], 'Description');
@@ -51,7 +47,7 @@ class InstallSchema implements InstallSchemaInterface
         $table = $installer->getConnection()->newTable(
             $installer->getTable('fastgento_locator_store')
         )->addColumn(
-            'location_id',
+            'id',
             \Magento\Framework\DB\Ddl\Table::TYPE_SMALLINT,
             null,
             ['nullable' => false, 'primary' => true],
@@ -66,8 +62,8 @@ class InstallSchema implements InstallSchemaInterface
             $installer->getIdxName('fastgento_locator_store', ['store_id']),
             ['store_id']
         )->addForeignKey(
-            $installer->getFkName('fastgento_locator_store', 'location_id', 'fastgento_locator', 'id'),
-            'location_id',
+            $installer->getFkName('fastgento_locator_store', 'id', 'fastgento_locator', 'id'),
+            'id',
             $installer->getTable('fastgento_locator'),
             'id',
             \Magento\Framework\DB\Ddl\Table::ACTION_CASCADE
