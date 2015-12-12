@@ -10,5 +10,13 @@
         <referenceBlock name="head.components">
             <block class="Magento\Framework\View\Element\Js\Components" name="bundle_checkout_page_head_components" template="Fastgento_Storelocator::js/components.phtml"/>
         </referenceBlock>
+        <referenceBlock name="footer_links">
+            <block class="Magento\Framework\View\Element\Html\Link\Current" name="storelocator-link">
+                <arguments>
+                    <argument name="label" xsi:type="string" translate="true">Store locator</argument>
+                    <argument name="path" xsi:type="string">storelocator</argument>
+                </arguments>
+            </block>
+        </referenceBlock>
     </body>
 </page>

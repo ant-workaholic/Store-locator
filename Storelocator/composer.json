@@ -19,5 +19,11 @@
                 "Fastgento/Storelocator"
             ]
         ]
+    },
+    "autoload": {
+        "files": [ "registration.php" ],
+        "psr-4": {
+          "Fastgento\Storelocator": ""
+        }
     }
 }

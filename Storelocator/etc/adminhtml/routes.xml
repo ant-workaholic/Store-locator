@@ -6,9 +6,9 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/routes.xsd">
-    <router id="standard">
-        <route id="storelocator" frontName="storelocator">
-            <module name="Fastgento_Storelocator" />
+    <router id="admin">
+        <route id="locations" frontName="locations">
+            <module name="Fastgento_Storelocator" before="Magento_Backend" />
         </route>
     </router>
 </config>
