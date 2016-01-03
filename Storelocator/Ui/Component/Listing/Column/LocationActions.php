@@ -10,8 +10,8 @@ use Magento\Framework\UrlInterface;
 class LocationActions extends Column
 {
     /** Url path */
-    const STORELOCATOR_URL_PATH_EDIT = 'storelocator/location/edit';
-    const STORELOCATOR_URL_PATH_DELETE = 'storelocator/location/delete';
+    const STORELOCATOR_URL_PATH_EDIT = 'locations/index/edit';
+    const STORELOCATOR_URL_PATH_DELETE = 'locations/index/delete';
 
     /** @var UrlBuilder */
     protected $actionUrlBuilder;

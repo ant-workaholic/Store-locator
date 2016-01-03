@@ -9,8 +9,10 @@
     <acl>
         <resources>
             <resource id="Magento_Backend::admin">
-                <resource id="Magento_Backend::stores">
-                        <resource id="Fastgento_Storelocator::locator_content" title="Storelocator" sortOrder="50"/>
+                <resource id="Magento_Backend::content">
+                    <resource id="Fasrgento_Storelocator::locator_content" title="Locator" sortOrder="10">
+                        <resource id="Fasrgento_Storelocator::location" title="Locations" sortOrder="40"/>
+                    </resource>
                 </resource>
             </resource>
         </resources>
