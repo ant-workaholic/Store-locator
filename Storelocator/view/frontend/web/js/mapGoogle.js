@@ -25,7 +25,20 @@ define(["jquery",
                 mapTypeId: google.maps.MapTypeId.ROADMAP
             }
             googleMap = new google.maps.Map($(this.options.mapCanvas)[0], mapOptions);
+            this._initMarkers(googleMap);
             return googleMap;
+        },
+        _initMarkers: function(googleMap) {
+            var markers = this.options.markers, myLatLng = {};
+            for (var i=0; i < this.options.markers.length - 1; i++) {
+                myLatLng = {lat: markers[i].latitude, lng: markers[i].longitude};
+                console.log(myLatLng);
+                var marker = new google.maps.Marker({
+                    position: myLatLng,
+                    map: googleMap,
+                    title: 'Hello World!'
+                });
+            }
         }
     });
     return $.mage.mapGoogle

@@ -19,10 +19,10 @@
         <item name="template" xsi:type="string">templates/form/collapsible</item>
         <item name="buttons" xsi:type="array">
             <item name="back" xsi:type="string">Fastgento\Storelocator\Block\Adminhtml\Location\Edit\BackButton</item>
-            <item name="delete" xsi:type="string">Fastgento\Storelocator\Block\Adminhtml\Location\Edit\DeleteButton</item>
+            <item name="delete" xsi:type="string">Magento\Cms\Block\Adminhtml\Block\Edit\DeleteButton</item>
             <item name="reset" xsi:type="string">Fastgento\Storelocator\Block\Adminhtml\Location\Edit\ResetButton</item>
             <item name="save" xsi:type="string">Fastgento\Storelocator\Block\Adminhtml\Location\Edit\SaveButton</item>
-            <item name="save_and_continue" xsi:type="string">Fastgento\Storelocator\Location\Adminhtml\Block\Edit\SaveAndContinueButton</item>
+            <item name="save_and_continue" xsi:type="string">Fastgento\Storelocator\Block\Adminhtml\Location\Edit\SaveAndContinueButton</item>
         </item>
     </argument>
     <dataSource name="location_form_data_source">
@@ -33,7 +33,7 @@
             <argument name="requestFieldName" xsi:type="string">id</argument>
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
-                    <item name="submit_url" xsi:type="url" path="srorelocator/index/save"/>
+                    <item name="submit_url" xsi:type="url" path="locations/index/save"/>
                 </item>
             </argument>
         </argument>
@@ -49,26 +49,60 @@
                 <item name="label" xsi:type="string" translate="true">General Information</item>
             </item>
         </argument>
-        <field name="id">
-            <argument name="data" xsi:type="array">
-                <item name="config" xsi:type="array">
-                    <item name="visible" xsi:type="boolean">false</item>
-                    <item name="dataType" xsi:type="string">text</item>
-                    <item name="formElement" xsi:type="string">input</item>
-                    <item name="source" xsi:type="string">location</item>
-                    <item name="dataScope" xsi:type="string">id</item>
-                </item>
-            </argument>
-        </field>
         <field name="name">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="dataType" xsi:type="string">text</item>
-                    <item name="label" xsi:type="string" translate="true">Name</item>
+                    <item name="label" xsi:type="string" translate="true">Location name</item>
                     <item name="formElement" xsi:type="string">input</item>
                     <item name="source" xsi:type="string">location</item>
                     <item name="sortOrder" xsi:type="number">20</item>
                     <item name="dataScope" xsi:type="string">name</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="latitude">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Location latitude</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">location</item>
+                    <item name="sortOrder" xsi:type="number">25</item>
+                    <item name="dataScope" xsi:type="string">latitude</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="longitude">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Location longitude</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">location</item>
+                    <item name="sortOrder" xsi:type="number">30</item>
+                    <item name="dataScope" xsi:type="string">longitude</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="description">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Description</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">description</item>
+                    <item name="sortOrder" xsi:type="number">35</item>
+                    <item name="dataScope" xsi:type="string">description</item>
                     <item name="validation" xsi:type="array">
                         <item name="required-entry" xsi:type="boolean">true</item>
                     </item>

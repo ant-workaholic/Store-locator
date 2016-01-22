@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <!-- Add new Tab -->
+        <tab id="fastgento" translate="label" sortOrder="300">
+            <label>Storelocator</label>
+        </tab>
+        <section id="fastgento" translate="label" type="text" sortOrder="140" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Fastgento Storelocator</label>
+            <tab>fastgento</tab>
+            <!-- resource tag name which we have to defined in the acl.xml -->
+            <resource>Fastgento_Storelocator::config_location</resource>
+            <group id="general" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General Options</label>
+                <field id="height" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Height</label>
+                </field>
+                <field id="width" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Width</label>
+                </field>
+                <field id="zoom" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Zoom</label>
+                </field>
+                <field id="lat" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Latitude</label>
+                </field>
+                <field id="long" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Longitude</label>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

@@ -27,7 +27,7 @@ class Save extends \Fastgento\Storelocator\Controller\Adminhtml\Location
                 $data['id'] = null;
             }
 
-            $model = $this->_objectManager->create('Magento\Cms\Model\Block')->load($id);
+            $model = $this->_objectManager->create('Fastgento\Storelocator\Model\Location')->load($id);
             if (!$model->getId() && $id) {
                 $this->messageManager->addError(__('This block no longer exists.'));
                 return $resultRedirect->setPath('*/*/');
@@ -42,7 +42,7 @@ class Save extends \Fastgento\Storelocator\Controller\Adminhtml\Location
                 // save the data
                 $model->save();
                 // display success message
-                $this->messageManager->addSuccess(__('You saved the block.'));
+                $this->messageManager->addSuccess(__('You saved the location.'));
                 // clear previously saved data from session
                 $this->_objectManager->get('Magento\Backend\Model\Session')->setFormData(false);
 

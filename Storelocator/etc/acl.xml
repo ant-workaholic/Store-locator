@@ -14,6 +14,13 @@
                         <resource id="Fasrgento_Storelocator::location" title="Locations" sortOrder="40"/>
                     </resource>
                 </resource>
+                <resource id="Magento_Backend::stores">
+                    <resource id="Magento_Backend::stores_settings">
+                        <resource id="Magento_Config::config">
+                            <resource id="Fastgento_Storelocator::config_location" title="Fastgento Section"/>
+                        </resource>
+                    </resource>
+                </resource>
             </resource>
         </resources>
     </acl>
