@@ -1,5 +1,5 @@
 /**
- * Copyright © 2015 Fastgento. All rights reserved.
+ * Copyright © 2016 Fastgento. All rights reserved.
  * See COPYING.txt for license details.
  */
 /*jshint jquery:true*/
@@ -14,6 +14,13 @@ define(["jquery",
         options: {
             mapCanvas: '#map'
         },
+
+        /**
+         * Create map widget
+         *
+         * @returns {exports.Map}
+         * @private
+         */
         _create: function() {
             var mapOptions, googleMap;
             $(this.options.mapCanvas).height(this.options.height);
@@ -28,6 +35,7 @@ define(["jquery",
             this._initMarkers(googleMap);
             return googleMap;
         },
+
         /**
          * Init markers data
          *
