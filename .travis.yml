@@ -68,7 +68,7 @@ before_script:
     - sudo service apache2 restart
     - rm ~/.composer/composer.json
     - touch ~/.composer/composer.json
-    - echo "{ minimum-stability:dev }" >> ~/.composer/composer.json
+    - echo "{ minimum-stability:alpha }" >> ~/.composer/composer.json
     # clone main magento github repository
     - git clone https://github.com/magento/magento2
     # install Magento
