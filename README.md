@@ -1,2 +1,2 @@
 This will be storelocator extension for Magento2 platform.
-https://travis-ci.org/ant-workaholic/Store-locator.svg?branch=master
+[![Build Status](https://travis-ci.org/ant-workaholic/Store-locator.svg?branch=master)](https://travis-ci.org/ant-workaholic/Store-locator)
