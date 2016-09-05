@@ -73,7 +73,6 @@ before_script:
     # switch to specific branch in you like
     #- git checkout 2.0;git checkout tags/2.0.2
     # add composer package under test, composer require will trigger update/install
-    - composer config repositories.travis_to_test git $FASTGENTO_COMPOSER_REPOSITORY_TO_TEST
     - composer require --dev fastgento/storelocator
     - composer install
     # run installation command using evn variables set above
