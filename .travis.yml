@@ -74,6 +74,7 @@ before_script:
     #- git checkout 2.0;git checkout tags/2.0.2
     # add composer package under test, composer require will trigger update/install
     - composer config repositories.travis_to_test git $FASTGENTO_COMPOSER_REPOSITORY_TO_TEST
+    - composer require fastgento/storelocator dev-master
     - composer install
     # run installation command using evn variables set above
     - php bin/magento setup:install --admin-email "$FASTGENTO_MAGE2_ADMIN_EMAIL" --admin-firstname "$FASTGENTO_MAGE2_ADMIN_FIRST_NAME" --admin-lastname "$FASTGENTO_MAGE2_ADMIN_LAST_NAME" --admin-password "$FASTGENTO_MAGE2_ADMIN_PASSWORD" --admin-user "$FASTGENTO_MAGE2_ADMIN_USERNAME" --backend-frontname admin --base-url "$FASTGENTO_MAGE2_FAKE_URL" --db-host 127.0.0.1 --db-name magento_2_travis --db-user root --session-save files --use-rewrites 1 --use-secure 0 -vvv
