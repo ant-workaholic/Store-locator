@@ -79,5 +79,5 @@ before_script:
     - php bin/magento setup:install --admin-email "$FASTGENTO_MAGE2_ADMIN_EMAIL" --admin-firstname "$FASTGENTO_MAGE2_ADMIN_FIRST_NAME" --admin-lastname "$FASTGENTO_MAGE2_ADMIN_LAST_NAME" --admin-password "$FASTGENTO_MAGE2_ADMIN_PASSWORD" --admin-user "$FASTGENTO_MAGE2_ADMIN_USERNAME" --backend-frontname admin --base-url "$FASTGENTO_MAGE2_FAKE_URL" --db-host 127.0.0.1 --db-name magento_2_travis --db-user root --session-save files --use-rewrites 1 --use-secure 0 -vvv
     # test that magento is installed
     - curl "$FASTGENTO_MAGE2_FAKE_URL/index.php" > /tmp/output.txt
-    - vendor/phpunit/phpunit/phpunit -c vendor/fastgento/storelocator/Test/Unit/
+    - vendor/phpunit/phpunit/phpunit -c dev/tests/unit/phpunit.xml.dist vendor/fastgento/storelocator/Test/Unit/
 script: test 'grep -Fx "magento-2-travis.dev" /tmp/output.txt'
