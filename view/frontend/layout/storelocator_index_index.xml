@@ -5,10 +5,13 @@
  * See COPYING.txt for license details.
  */
 -->
-<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
         <referenceContainer name="content">
             <block class="Fastgento\Storelocator\Block\Locator\Map" name="map_block" template="Fastgento_Storelocator::map.phtml"/>
+        </referenceContainer>
+        <referenceContainer name="sidebar.main">
+            <block class="Fastgento\Storelocator\Block\Locator\Item" name="locator.item.block" template="Fastgento_Storelocator::location.phtml"/>
         </referenceContainer>
     </body>
 </page>

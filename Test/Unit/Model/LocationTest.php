@@ -7,7 +7,7 @@ namespace Fastgento\Storelocator\Test\Unit\Model;
  *
  * @package Fastgento\Storelocator\Test\Unit\Model
  */
-class LocationTest extends \PHPUnit_Framework_TestCase
+class LocationTest extends PHPUnit_Framework_TestCase
 {
     /**
      * @var \Fastgento\Storelocator\Model\Location|\PHPUnit_Framework_MockObject_MockObject

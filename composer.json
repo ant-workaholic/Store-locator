@@ -2,13 +2,23 @@
     "name": "fastgento/storelocator",
     "description": "Store location functionality for Magento 2",
     "type": "magento2-module",
-    "version": "dev-master",
+    "version": "1.0.0-dev",
     "license": [
         "OSL-3.0",
         "AFL-3.0"
     ],
     "require": {
-        "php": "~5.6.0|7.0.2|7.0.4|~7.0.6"
+        "php": "~5.5.0|~5.6.0",
+        "magento/magento-composer-installer": "*",
+        "magento/framework": "~1.0.0"
+    },
+    "extra": {
+        "map": [
+            [
+                "*",
+                "Fastgento/Storelocator"
+            ]
+        ]
     },
     "autoload": {
         "files": [ "registration.php" ],
