@@ -37,4 +37,21 @@
             <argument name="filterPool" xsi:type="object" shared="false">StorelocatorGridFilterPool</argument>
         </arguments>
     </virtualType>
+    <virtualType name="Fastgento\Storelocator\LocationImageUpload" type="Magento\Catalog\Model\ImageUploader">
+        <arguments>
+            <argument name="baseTmpPath" xsi:type="string">location/tmp/item</argument>
+            <argument name="basePath" xsi:type="string">location/item</argument>
+            <argument name="allowedExtensions" xsi:type="array">
+                <item name="jpg" xsi:type="string">jpg</item>
+                <item name="jpeg" xsi:type="string">jpeg</item>
+                <item name="gif" xsi:type="string">gif</item>
+                <item name="png" xsi:type="string">png</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Fastgento\Storelocator\Controller\Adminhtml\Image\Upload">
+        <arguments>
+            <argument name="imageUploader" xsi:type="object">Fastgento\Storelocator\LocationImageUpload</argument>
+        </arguments>
+    </type>
 </config>

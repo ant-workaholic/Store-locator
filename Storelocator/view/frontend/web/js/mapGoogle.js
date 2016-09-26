@@ -1,5 +1,5 @@
 /**
- * Copyright © 2015 Fastgento. All rights reserved.
+ * Copyright © 2016 Fastgento. All rights reserved.
  * See COPYING.txt for license details.
  */
 /*jshint jquery:true*/
@@ -14,6 +14,13 @@ define(["jquery",
         options: {
             mapCanvas: '#map'
         },
+
+        /**
+         * Create map widget
+         *
+         * @returns {exports.Map}
+         * @private
+         */
         _create: function() {
             var mapOptions, googleMap;
             $(this.options.mapCanvas).height(this.options.height);
@@ -28,16 +35,23 @@ define(["jquery",
             this._initMarkers(googleMap);
             return googleMap;
         },
+
+        /**
+         * Init markers data
+         *
+         * @param googleMap
+         * @private
+         */
         _initMarkers: function(googleMap) {
-            var markers = this.options.markers, myLatLng = {};
-            for (var i=0; i < this.options.markers.length - 1; i++) {
+            var markers = this.options.markers, myLatLng = {}, markersArr = [];
+            for (var i = 0; i <= markers.length - 1; i++) {
                 myLatLng = {lat: markers[i].latitude, lng: markers[i].longitude};
-                console.log(myLatLng);
-                var marker = new google.maps.Marker({
+                // Add new marker to the map
+                markersArr.push(new google.maps.Marker({
                     position: myLatLng,
                     map: googleMap,
-                    title: 'Hello World!'
-                });
+                    title: markers[i].title
+                }));
             }
         }
     });
