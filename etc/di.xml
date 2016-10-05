@@ -37,7 +37,7 @@
             <argument name="filterPool" xsi:type="object" shared="false">StorelocatorGridFilterPool</argument>
         </arguments>
     </virtualType>
-    <virtualType name="Fastgento\Storelocator\LocationImageUpload" type="Magento\Catalog\Model\ImageUploader">
+    <virtualType name="Fastgento\Storelocator\LocationImageUpload" type="Fastgento\Storelocator\Model\ImageUploader">
         <arguments>
             <argument name="baseTmpPath" xsi:type="string">location/tmp/item</argument>
             <argument name="basePath" xsi:type="string">location/item</argument>

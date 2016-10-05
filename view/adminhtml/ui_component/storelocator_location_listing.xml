@@ -188,6 +188,13 @@
                 </item>
             </argument>
         </column>
+        <actionsColumn name="actions" class="Fastgento\Storelocator\Ui\Component\Listing\Column\LocationActions">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="indexField" xsi:type="string">id</item>
+                </item>
+            </argument>
+        </actionsColumn>
         <!--<column name="store_id" class="Magento\Store\Ui\Component\Listing\Column\Store">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">

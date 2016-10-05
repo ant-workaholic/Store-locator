@@ -55,6 +55,15 @@ class Edit extends \Fastgento\Storelocator\Controller\Adminhtml\Location
         /** @var \Magento\Backend\Model\View\Result\Page $resultPage */
         $resultPage = $this->resultPageFactory->create();
 
+        if (is_array($data)) {
+            if (isset($data['image']['delete'])) {
+                $data['image'] = null;
+            } else {
+                unset($data['image']);
+            }
+            $model->addData($data);
+        }
+
         // 5. Build edit form
         $this->initPage($resultPage)->addBreadcrumb(
             $id ? __('Edit Location') : __('New Location'),

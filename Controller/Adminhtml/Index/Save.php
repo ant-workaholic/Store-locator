@@ -6,6 +6,44 @@ use Magento\Framework\App\ResponseInterface;
 class Save extends \Fastgento\Storelocator\Controller\Adminhtml\Location
 {
     /**
+     * @var
+     */
+    protected $imageUploader;
+
+    /**
+     * Get image uploader
+     *
+     * @return \Magento\Catalog\Model\ImageUploader
+     *
+     * @deprecated
+     */
+    private function getImageUploader()
+    {
+        if ($this->imageUploader === null) {
+            $this->imageUploader = \Magento\Framework\App\ObjectManager::getInstance()->get(
+                'Fastgento\Storelocator\LocationImageUpload'
+            );
+        }
+        return $this->imageUploader;
+    }
+
+    /**
+     * Image data preprocessing
+     *
+     * @param array $data
+     *
+     * @return array
+     */
+    public function imagePreprocessing($data)
+    {
+        if (empty($data['image'])) {
+            unset($data['image']);
+            $data['image']['delete'] = true;
+        }
+        return $data;
+    }
+
+    /**
      * Dispatch request
      *
      * @return \Magento\Framework\Controller\ResultInterface|ResponseInterface
@@ -33,14 +71,21 @@ class Save extends \Fastgento\Storelocator\Controller\Adminhtml\Location
                 return $resultRedirect->setPath('*/*/');
             }
 
+            $data = $this->imagePreprocessing($data);
+
             // init model and set data
 
-            $model->setData($data);
+            $model->addData($this->_filterLocationPostData($data));
 
             // try to save it
             try {
                 // save the data
                 $model->save();
+
+                if ($model->getImage()) {
+                    $this->getImageUploader()->moveFileFromTmp($model->getImage());
+                }
+
                 // display success message
                 $this->messageManager->addSuccess(__('You saved the location.'));
                 // clear previously saved data from session
@@ -63,5 +108,30 @@ class Save extends \Fastgento\Storelocator\Controller\Adminhtml\Location
         }
         return $resultRedirect->setPath('*/*/');
     }
+
+    /**
+     * Filter category data
+     *
+     * @param array $rawData
+     * @return array
+     */
+    protected function _filterLocationPostData(array $rawData)
+    {
+        $data = $rawData;
+        // @todo It is a workaround to prevent saving this data in category model and it has to be refactored in future
+        if (isset($data['image']) && is_array($data['image'])) {
+            if (!empty($data['image']['delete'])) {
+                $data['image'] = null;
+            } else {
+                if (isset($data['image'][0]['name']) && isset($data['image'][0]['tmp_name'])) {
+                    $data['image'] = $data['image'][0]['name'];
+                } else {
+                    unset($data['image']);
+                }
+            }
+        }
+        return $data;
+    }
+
 
 }

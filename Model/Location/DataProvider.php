@@ -59,7 +59,13 @@ class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
         $items = $this->collection->getItems();
         /** @var \Fastgento\Storelocator\Model\Location $location */
         foreach ($items as $location) {
-            $this->loadedData[$location->getId()] = $location->getData();
+            $locationData = $location->getData();
+            if (isset($locationData['image'])) {
+                unset($locationData['image']);
+                $locationData['image'][0]['name'] = $location->getData('image');
+                $locationData['image'][0]['url'] = $location->getImageUrl();
+            }
+            $this->loadedData[$location->getId()] = $locationData;
         }
         return $this->loadedData;
     }

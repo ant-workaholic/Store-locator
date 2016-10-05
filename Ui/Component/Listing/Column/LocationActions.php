@@ -59,7 +59,7 @@ class LocationActions extends Column
         if (isset($dataSource['data']['items'])) {
             foreach ($dataSource['data']['items'] as & $item) {
                 $name = $this->getData('name');
-                if (isset($item['page_id'])) {
+                if (isset($item['id'])) {
                     $item[$name]['edit'] = [
                         'href' => $this->urlBuilder->getUrl($this->editUrl, ['id' => $item['id']]),
                         'label' => __('Edit')
@@ -75,7 +75,6 @@ class LocationActions extends Column
                 }
             }
         }
-
         return $dataSource;
     }
 }
