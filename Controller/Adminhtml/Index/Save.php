@@ -73,9 +73,7 @@ class Save extends \Fastgento\Storelocator\Controller\Adminhtml\Location
 
             $data = $this->imagePreprocessing($data);
 
-            // init model and set data
-
-            $model->addData($this->_filterLocationPostData($data));
+            $model->setData($this->_filterLocationPostData($data));
 
             // try to save it
             try {

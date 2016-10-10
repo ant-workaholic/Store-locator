@@ -163,9 +163,10 @@ class Location extends AbstractModel implements LocationInterface, IdentityInter
     }
 
     /**
-     * Retrieve image URL
+     * Get image url
      *
-     * @return string
+     * @return bool|string
+     * @throws \Magento\Framework\Exception\LocalizedException
      */
     public function getImageUrl()
     {

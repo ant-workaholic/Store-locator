@@ -28,7 +28,22 @@ class UpgradeSchema implements UpgradeSchemaInterface
                 'image',
                 [
                     'type'     => \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
-                    'nullable' => false,
+                    'nullable' => true,
+                    'comment'  => 'Location image attribute'
+                ]
+            );
+        }
+        if (version_compare($context->getVersion(), '1.0.2', '<')) {
+            /**
+             * Drop entity Id columns
+             */
+            $setup->getConnection()->dropColumn($setup->getTable('fastgento_locator'), 'image');
+            $setup->getConnection()->addColumn(
+                $setup->getTable('fastgento_locator'),
+                'image',
+                [
+                    'type'     => \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
+                    'nullable' => true,
                     'comment'  => 'Location image attribute'
                 ]
             );

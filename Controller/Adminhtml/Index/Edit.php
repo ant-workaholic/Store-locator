@@ -1,6 +1,14 @@
 <?php
+/**
+ *
+ */
 namespace Fastgento\Storelocator\Controller\Adminhtml\Index;
 
+/**
+ * Class Edit
+ *
+ * @package Fastgento\Storelocator\Controller\Adminhtml\Index
+ */
 class Edit extends \Fastgento\Storelocator\Controller\Adminhtml\Location
 {
     /**
@@ -45,9 +53,6 @@ class Edit extends \Fastgento\Storelocator\Controller\Adminhtml\Location
         }
         // 3. Set entered data if was error when we do save
         $data = $this->_objectManager->get('Magento\Backend\Model\Session')->getFormData(true);
-        if (!empty($data)) {
-            $model->setData($data);
-        }
 
         // 4. Register model to use later in blocks
         $this->_coreRegistry->register('location', $model);
