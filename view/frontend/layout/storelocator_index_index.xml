@@ -6,12 +6,18 @@
  */
 -->
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <title>Store locator</title>
+    </head>
     <body>
         <referenceContainer name="content">
             <block class="Fastgento\Storelocator\Block\Locator\Map" name="map_block" template="Fastgento_Storelocator::map.phtml"/>
         </referenceContainer>
         <referenceContainer name="sidebar.main">
             <block class="Fastgento\Storelocator\Block\Locator\Item" name="locator.item.block" template="Fastgento_Storelocator::location.phtml"/>
+        </referenceContainer>
+        <referenceContainer name="head.additional">
+            <block class="Fastgento\Storelocator\Block\Page\Head\Google" name="googlemaps.api" template="Fastgento_Storelocator::head/script.phtml" />
         </referenceContainer>
     </body>
 </page>
