@@ -76,9 +76,10 @@ class Map extends \Magento\Framework\View\Element\Template
         /** @var $location /Fastgento/Storelocator/Model/Location */
         foreach ($collection as $location) {
             $markers[] = array(
-                "latitude"  => (float)$location->getLatitude(),
-                "longitude" => (float)$location->getLongitude(),
-                "title"     => $location->getName(),
+                "latitude"    => (float)$location->getLatitude(),
+                "longitude"   => (float)$location->getLongitude(),
+                "title"       => $location->getName(),
+                "description" => $location->getDescription()
             );
         }
 
