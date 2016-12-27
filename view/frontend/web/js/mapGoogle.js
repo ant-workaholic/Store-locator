@@ -65,8 +65,8 @@ define(["jquery",
                     title: markers[i].title
                 });
 
-                marker.addListener('click', function() {
-                    infowindow.open(map, marker);
+                marker.addListener('click', function(i) {
+                    infowindow.open(map, markers[i]);
                 });
 
                 // Add new marker to the map
