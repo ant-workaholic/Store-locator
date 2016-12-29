@@ -42,36 +42,36 @@ define(["jquery",
          * @private
          */
         _initMarkers: function(googleMap) {
-            var markers = this.options.markers, myLatLng = {}, markersArr = [], marker;
+            var markers = this.options.markers,
+                myLatLng = {},
+                markersArr = [],
+                marker,
+                content;
+
             for (var i = 0; i <= markers.length - 1; i++) {
                 myLatLng = {lat: markers[i].latitude, lng: markers[i].longitude};
-
-                var contentString = '<div id="content">'+
-                    '<div id="siteNotice">'+
-                    '</div>'+
-                    '<h1 id="firstHeading" class="firstHeading">' + markers[i].title + '</h1>'+
-                    '<div id="bodyContent">'+
-                    '<p>' + markers[i].description + '</p>' +
-                    '</div>'+
-                    '</div>';
-
-                var infowindow = new google.maps.InfoWindow({
-                    content: contentString
-                });
-
                 marker = new google.maps.Marker({
                     position: myLatLng,
                     map: googleMap,
-                    title: markers[i].title
+                    title: markers[i].title,
+                    clickable: true
                 });
 
-                marker.addListener('click', function(i) {
-                    infowindow.open(map, markers[i]);
-                });
-
+                content = '<h2>' + marker.title + '</h2>' +
+                          '<div class="content">' + markers[i].description + '</div>';
+                attachSecretMessage(marker, content);
                 // Add new marker to the map
                 markersArr.push(marker);
             }
+            function attachSecretMessage(marker, message) {
+                var infowindow = new google.maps.InfoWindow({
+                    content: message
+                });
+                marker.addListener('click', function() {
+                    infowindow.open(marker.get('map'), marker);
+                });
+            }
+
         }
     });
     return $.mage.mapGoogle

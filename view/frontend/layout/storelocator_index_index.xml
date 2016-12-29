@@ -14,7 +14,9 @@
             <block class="Fastgento\Storelocator\Block\Locator\Map" name="map_block" template="Fastgento_Storelocator::map.phtml"/>
         </referenceContainer>
         <referenceContainer name="sidebar.main">
+            <referenceBlock name="wishlist_sidebar" remove="true" />
             <block class="Fastgento\Storelocator\Block\Locator\Item" name="locator.item.block" template="Fastgento_Storelocator::location.phtml"/>
+            <referenceBlock name="catalog.compare.sidebar" remove="true"/>
         </referenceContainer>
         <referenceContainer name="head.additional">
             <block class="Fastgento\Storelocator\Block\Page\Head\Google" name="googlemaps.api" template="Fastgento_Storelocator::head/script.phtml" />
