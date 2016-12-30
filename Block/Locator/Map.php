@@ -113,9 +113,8 @@ class Map extends \Magento\Framework\View\Element\Template
         return json_encode($this->_options);
     }
 
-    /**
-     * Retrieve current ip
-     */
+    //TODO: Need to move the functional to another place
+    //TODO: This code requires refactoring
     public function getCurrentIp()
     {
         /** @return string */
@@ -126,6 +125,8 @@ class Map extends \Magento\Framework\View\Element\Template
         return $a->getRemoteAddress();
     }
 
+    //TODO: Need to move the functional to another place
+    //TODO: This code requires refactoring
     public function sendRequest()
     {
         $json = file_get_contents("http://ipinfo.io/95.164.52.228/geo");
@@ -133,9 +134,8 @@ class Map extends \Magento\Framework\View\Element\Template
         return $details;
     }
 
-//    /**
-//     * @return mixed
-//     */
+
+    //TODO: Need to get a data about current country here.
     public function getCurrentCountryName()
     {
         $countryId = $this->_scopeConfig->getValue('general/store_information/country_id');
