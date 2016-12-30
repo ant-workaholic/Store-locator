@@ -30,7 +30,20 @@ define(["jquery",
                 zoom: this.options.zoom,
                 mapTypeId: google.maps.MapTypeId.ROADMAP
             }
+
             googleMap = new google.maps.Map($(this.options.mapCanvas)[0], mapOptions);
+
+            var address = this.options.country;
+            var geocoder = new google.maps.Geocoder();
+            geocoder.geocode( { 'address': address}, function(results, status) {
+                if (status == google.maps.GeocoderStatus.OK) {
+                    googleMap.setCenter(results[0].geometry.location);
+                    googleMap.fitBounds(results[0].geometry.bounds);
+                } else {
+                    alert("Geocode was not successful for the following reason: " + status);
+                }
+            });
+
             this._initMarkers(googleMap);
             return googleMap;
         },

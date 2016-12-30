@@ -19,6 +19,9 @@ class Map extends \Magento\Framework\View\Element\Template
 {
     const HOST = 'http://ipinfo.io/';
 
+    // This is a temporary test default data
+    //TODO: Should be deleted in future.
+    const DEFAULT_TEST_COUNTRY = 'Germany';
     /**
      * Options storage parameter
      *
@@ -39,6 +42,16 @@ class Map extends \Magento\Framework\View\Element\Template
     protected $_client;
 
     /**
+     * @var
+     */
+    protected $_countryInfo;
+
+    /**
+     * @var
+     */
+    protected $_scopeConfig;
+
+    /**
      * Init collection factory
      *
      * @param Template\Context                    $context
@@ -50,10 +63,14 @@ class Map extends \Magento\Framework\View\Element\Template
         Template\Context $context,
         array $data = [],
         LocationCollectionFactory $collectionFactory,
-        \Magento\Framework\HTTP\Client\Curl $client
+        \Magento\Framework\HTTP\Client\Curl $client,
+        \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig,
+        \Magento\Directory\Api\CountryInformationAcquirerInterface $countryInformation
     ) {
         $this->_client = $client;
         $this->_collectionFactory = $collectionFactory;
+        $this->_countryInfo = $countryInformation;
+        $this->_scopeConfig = $scopeConfig;
         parent::__construct($context, $data);
     }
 
@@ -83,7 +100,7 @@ class Map extends \Magento\Framework\View\Element\Template
             );
         }
 
-        // Test value data
+        // TODO: Need to implement functionality which uses the country data from the current store
         $this->_options = array(
             "height"  => $height,
             "width"   => $width,
@@ -91,6 +108,7 @@ class Map extends \Magento\Framework\View\Element\Template
             "lat"     => $lat,
             "long"    => $long,
             "markers" => $markers,
+            "country" => self::DEFAULT_TEST_COUNTRY
         );
         return json_encode($this->_options);
     }
@@ -113,5 +131,14 @@ class Map extends \Magento\Framework\View\Element\Template
         $json = file_get_contents("http://ipinfo.io/95.164.52.228/geo");
         $details = json_decode($json);
         return $details;
+    }
+
+//    /**
+//     * @return mixed
+//     */
+    public function getCurrentCountryName()
+    {
+        $countryId = $this->_scopeConfig->getValue('general/store_information/country_id');
+        return $countryId;
     }
 }
