@@ -52,6 +52,13 @@ class Map extends \Magento\Framework\View\Element\Template
     protected $_scopeConfig;
 
     /**
+     * @var
+     */
+    protected $_logger;
+
+    protected $_countryHelper;
+
+    /**
      * Init collection factory
      *
      * @param Template\Context                    $context
@@ -65,12 +72,19 @@ class Map extends \Magento\Framework\View\Element\Template
         LocationCollectionFactory $collectionFactory,
         \Magento\Framework\HTTP\Client\Curl $client,
         \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig,
-        \Magento\Directory\Api\CountryInformationAcquirerInterface $countryInformation
+        \Magento\Directory\Api\CountryInformationAcquirerInterface $countryInformation,
+        \Psr\Log\LoggerInterface $logger,
+        \Magento\Store\Model\StoreManagerInterface $storeManager,
+        \Magento\Directory\Model\Country $countryHelper
     ) {
         $this->_client = $client;
         $this->_collectionFactory = $collectionFactory;
         $this->_countryInfo = $countryInformation;
         $this->_scopeConfig = $scopeConfig;
+        $this->_logger = $logger;
+        $this->_storeManager = $storeManager;
+        $this->_countryHelper = $countryHelper;
+        $this->getCurrentCountryName();
         parent::__construct($context, $data);
     }
 
@@ -108,7 +122,7 @@ class Map extends \Magento\Framework\View\Element\Template
             "lat"     => $lat,
             "long"    => $long,
             "markers" => $markers,
-            "country" => self::DEFAULT_TEST_COUNTRY
+            "country" => $this->getCurrentCountryName()
         );
         return json_encode($this->_options);
     }
@@ -134,11 +148,14 @@ class Map extends \Magento\Framework\View\Element\Template
         return $details;
     }
 
-
-    //TODO: Need to get a data about current country here.
+    /**
+     * @return mixed
+     */
     public function getCurrentCountryName()
     {
-        $countryId = $this->_scopeConfig->getValue('general/store_information/country_id');
-        return $countryId;
+        $country = $this->_countryHelper
+            ->loadByCode($this->_storeManager->getStore()->getConfig('general/country/default'))
+            ->getName();
+        return $country;
     }
 }
