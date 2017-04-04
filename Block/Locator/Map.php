@@ -16,6 +16,7 @@ use Fastgento\Storelocator\Model\ResourceModel\Location\CollectionFactory as Loc
  * @package Fastgento\Storelocator\Block\Locator
  */
 class Map extends \Magento\Framework\View\Element\Template
+    implements \Magento\Framework\DataObject\IdentityInterface
 {
     const HOST = 'http://ipinfo.io/';
 
@@ -56,6 +57,9 @@ class Map extends \Magento\Framework\View\Element\Template
      */
     protected $_logger;
 
+    /**
+     * @var \Magento\Directory\Model\Country
+     */
     protected $_countryHelper;
 
     /**
@@ -128,6 +132,15 @@ class Map extends \Magento\Framework\View\Element\Template
         );
         return json_encode($this->_options);
     }
+
+    /**
+     * @return array
+     */
+    public function getIdentities()
+    {
+        return [\Fastgento\Storelocator\Model\Location::CACHE_TAG . '_' . "map"];
+    }
+
 
     //TODO: Need to move the functional to another place
     //TODO: This code requires refactoring
