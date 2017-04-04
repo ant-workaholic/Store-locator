@@ -1,6 +1,10 @@
 <?php
 namespace Fastgento\Storelocator\Api\Data;
 
+/**
+ * Interface LocationInterface
+ * @package Fastgento\Storelocator\Api\Data
+ */
 interface LocationInterface
 {
     /**#@+
@@ -11,6 +15,9 @@ interface LocationInterface
     const LONGITUDE   = 'longitude';
     const LATITUDE    = 'latitude';
     const DESCRIPTION = 'description';
+    const STREET      = 'street';
+    const REGION      = 'region';
+    const POSTCODE    = 'postcode';
     /**#@-*/
 
 
@@ -89,4 +96,48 @@ interface LocationInterface
      */
     public function setLatitude($latitude);
 
+    /**
+     * Set street data
+     *
+     * @param string $street
+     * @return mixed
+     */
+    public function setStreet($street);
+
+    /**
+     * Retrieve street data
+     *
+     * @return string
+     */
+    public function getStreet();
+
+    /**
+     * Specify region
+     *
+     * @param $region
+     * @return mixed
+     */
+    public function setRegion($region);
+
+    /**
+     * Retrieve region
+     *
+     * @return string
+     */
+    public function getRegion();
+
+    /**
+     * Set postcode
+     *
+     * @return mixed
+     */
+    public function setPostcode($postcode);
+
+    /**
+     * Get postcode
+     *
+     * @var string $postcode
+     * @return mixed
+     */
+    public function getPostcode();
 }

@@ -4,6 +4,20 @@
  * See COPYING.txt for license details.
  */
 ?>
+<form class="form minisearch">
+<div class="field search">
+    <label class="label" for="search" data-role="minisearch-label">
+        <span><?php echo __("Search Store"); ?></span>
+    </label>
+    <div class="control">
+        <input id="search" type="text" name="q" value="" placeholder="Search entire store here..." class="input-text" maxlength="128" role="combobox" aria-haspopup="false" aria-autocomplete="both" autocomplete="off">
+        <div id="search_autocomplete" class="search-autocomplete" style="display: none;"></div>
+        <div class="nested">
+            <a class="action advanced" href="#" data-action="advanced-search"><?php echo __("Search nearest store"); ?></a>
+        </div>
+    </div>
+</div>
+</form>
 <?php /** @var $block \Fastgento\Storelocator\Block\Locator\Map */ ?>
 <div class="map-wrapper" data-mage-init='{"mapGoogle":<?php echo $block->getSerializedOptions();?>}'>
     <div id="map"></div>

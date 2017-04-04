@@ -188,6 +188,34 @@
                 </item>
             </argument>
         </column>
+        <column name="street">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="editor" xsi:type="array">
+                        <item name="editorType" xsi:type="string">text</item>
+                        <item name="validation" xsi:type="array">
+                            <item name="required-entry" xsi:type="boolean">true</item>
+                        </item>
+                    </item>
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Street</item>
+                </item>
+            </argument>
+        </column>
+        <column name="region">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="editor" xsi:type="array">
+                        <item name="editorType" xsi:type="string">text</item>
+                        <item name="validation" xsi:type="array">
+                            <item name="required-entry" xsi:type="boolean">true</item>
+                        </item>
+                    </item>
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Region</item>
+                </item>
+            </argument>
+        </column>
         <actionsColumn name="actions" class="Fastgento\Storelocator\Ui\Component\Listing\Column\LocationActions">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">

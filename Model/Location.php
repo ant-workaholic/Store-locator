@@ -163,6 +163,52 @@ class Location extends AbstractModel implements LocationInterface, IdentityInter
     }
 
     /**
+     * @return mixed
+     */
+    public function getRegion()
+    {
+        return $this->getData(self::REGION);
+    }
+
+    /**
+     * @param $region
+     * @return $this
+     */
+    public function setRegion($region)
+    {
+        return $this->setData(self::REGION, $region);
+    }
+
+    /**
+     * Retrieve a street of the specific location
+     *
+     * @return mixed
+     */
+    public function getStreet()
+    {
+        return $this->getData(self::STREET);
+    }
+
+    /**
+     * Specify a street address
+     */
+    public function setStreet($street)
+    {
+        $this->setData(self::STREET, $street);
+    }
+
+    public function getPostcode()
+    {
+        return $this->getData(self::POSTCODE);
+    }
+
+    public function setPostcode($postcode)
+    {
+        $this->setData(self::POSTCODE, $postcode);
+    }
+
+
+    /**
      * Get image url
      *
      * @return bool|string

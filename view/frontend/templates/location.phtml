@@ -1,11 +1,36 @@
 <?php
-echo "This is a location block";
+/**
+ * @var $block \Fastgento\Storelocator\Block\Locator\Item
+ */
 ?>
 <?php $collection = $block->getAllLocations(); ?>
-<?php foreach ($collection as $item): ?>
-    <ul class="location_info">
-        <li><a href="#"><?php echo $item->getName(); ?></a></li>
-        <li><?php echo $item->getDescription(); ?></li>
-        <li><img src="<?php echo $item->getImageUrl(); ?>" /></li>
+<?php /** @var \Fastgento\Storelocator\Model\Location $item */ ?>
+<div class="verticalCarousel">
+    <div class="verticalCarouselHeader">
+        <h3><?php echo __("Locations"); ?></h3>
+        <a href="#" class="vc_goDown"><i class="fa fa-fw fa-angle-down"></i></a>
+        <a href="#" class="vc_goUp"><i class="fa fa-fw fa-angle-up"></i></a>
+    </div>
+    <ul class="verticalCarouselGroup vc_list location_info">
+        <?php foreach ($collection as $item): ?>
+            <li>
+                <h1><a href="#"><?php echo $item->getName(); ?></a></h1>
+                <p>
+                    <?php echo $item->getDescription(); ?>
+                    <img src="<?php echo $item->getImageUrl(); ?>" />
+                </p>
+                <p>
+                    <?php echo $item->getStreet(); ?>
+                </p>
+            </li>
+        <?php endforeach ?>
     </ul>
-<?php endforeach ?>
+</div>
+<script type="text/javascript">
+    requirejs(['jquery', 'scroll'], function($) {
+        $(".verticalCarousel").verticalCarousel({
+            currentItem: 1,
+            showItems: 2,
+        });
+    });
+</script>

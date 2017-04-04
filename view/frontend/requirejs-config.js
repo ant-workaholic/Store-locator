@@ -8,5 +8,15 @@ var config = {
         '*': {
             mapGoogle: 'Fastgento_Storelocator/js/mapGoogle'
         }
+    },
+    paths:{
+        "scroll":"Fastgento_Storelocator/js/jQuery.verticalCarousel"
+    },
+
+    shim: {
+        scroll: {
+            deps: ['jquery'],
+            exports: 'verticalCarousel'
+        }
     }
 };

@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright © 2015 Fastgento. All rights reserved.
+ * Copyright © 2017 Fastgento. All rights reserved.
  * See COPYING.txt for license details.
  */
 \Magento\Framework\Component\ComponentRegistrar::register(

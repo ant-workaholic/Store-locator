@@ -100,6 +100,7 @@ class Map extends \Magento\Framework\View\Element\Template
         $zoom = $this->_scopeConfig->getValue("fastgento/general/zoom");
         $lat = $this->_scopeConfig->getValue("fastgento/general/lat");
         $long = $this->_scopeConfig->getValue("fastgento/general/long");
+        $geolocation = $this->_scopeConfig->getValue("fastgento/general/geolocation");
 
         $collection = $this->_collectionFactory->create();
 
@@ -116,13 +117,14 @@ class Map extends \Magento\Framework\View\Element\Template
 
         // TODO: Need to implement functionality which uses the country data from the current store
         $this->_options = array(
-            "height"  => $height,
-            "width"   => $width,
-            "zoom"    => (int)$zoom,
-            "lat"     => $lat,
-            "long"    => $long,
-            "markers" => $markers,
-            "country" => $this->getCurrentCountryName()
+            "height"      => $height,
+            "width"       => $width,
+            "zoom"        => (int)$zoom,
+            "lat"         => $lat,
+            "long"        => $long,
+            "markers"     => $markers,
+            "geolocation" => $geolocation,
+            "country"     => $this->getCurrentCountryName()
         );
         return json_encode($this->_options);
     }

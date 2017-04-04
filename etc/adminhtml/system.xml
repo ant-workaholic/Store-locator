@@ -15,6 +15,10 @@
                 <field id="api_key" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Google API Key</label>
                 </field>
+                <field id="geolocation" translate="label" type="select" sortOrder="100" showInDefault="1" showInWebsite="0" showInStore="0" canRestore="1">
+                    <label>Enable Geolocation</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
                 <field id="height" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Height</label>
                 </field>
