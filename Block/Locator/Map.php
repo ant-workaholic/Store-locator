@@ -88,7 +88,7 @@ class Map extends \Magento\Framework\View\Element\Template
         $this->_logger = $logger;
         $this->_storeManager = $storeManager;
         $this->_countryHelper = $countryHelper;
-        $this->getCurrentCountryName();
+        //$this->getCurrentCountryName();
         parent::__construct($context, $data);
     }
 
@@ -128,7 +128,7 @@ class Map extends \Magento\Framework\View\Element\Template
             "long"        => $long,
             "markers"     => $markers,
             "geolocation" => $geolocation,
-            "country"     => $this->getCurrentCountryName()
+            //"country"     => //$this->getCurrentCountryName()
         );
         return json_encode($this->_options);
     }
@@ -166,11 +166,11 @@ class Map extends \Magento\Framework\View\Element\Template
     /**
      * @return mixed
      */
-    public function getCurrentCountryName()
-    {
-        $country = $this->_countryHelper
-            ->loadByCode($this->_storeManager->getStore()->getConfig('general/country/default'))
-            ->getName();
-        return $country;
-    }
+//    public function getCurrentCountryName()
+//    {
+//        $country = $this->_countryHelper
+//            ->loadByCode($this->_storeManager->getStore()->getConfig('general/country/default'))
+//            ->getName();
+//        return $country;
+//    }
 }
