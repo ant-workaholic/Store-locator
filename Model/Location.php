@@ -12,6 +12,14 @@ use Fastgento\Storelocator\Api\Data\LocationInterface;
 class Location extends AbstractModel implements LocationInterface, IdentityInterface
 {
     /**
+     * Prefix of the model
+     *
+     * @var string
+     */
+    protected $_eventPrefix = "fastgento_storelocator";
+
+
+    /**
      * @var \Magento\Store\Model\StoreManagerInterface
      */
     protected $_storeManager;
