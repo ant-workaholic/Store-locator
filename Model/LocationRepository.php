@@ -14,6 +14,10 @@ use Fastgento\Storelocator\Model\ResourceModel\Location as ResourceLocation;
 use Fastgento\Storelocator\Model\ResourceModel\Location\CollectionFactory as LocationCollectionFactory;
 use Magento\Store\Model\StoreManagerInterface;
 
+/**
+ * Class LocationRepository
+ * @package Fastgento\Storelocator\Model
+ */
 class LocationRepository implements LocationRepositoryInterface
 {
 

@@ -12,14 +12,6 @@ use Fastgento\Storelocator\Api\Data\LocationInterface;
 class Location extends AbstractModel implements LocationInterface, IdentityInterface
 {
     /**
-     * Prefix of the model
-     *
-     * @var string
-     */
-    protected $_eventPrefix = "fastgento_storelocator";
-
-
-    /**
      * @var \Magento\Store\Model\StoreManagerInterface
      */
     protected $_storeManager;
@@ -171,6 +163,8 @@ class Location extends AbstractModel implements LocationInterface, IdentityInter
     }
 
     /**
+     * Get region
+     *
      * @return mixed
      */
     public function getRegion()
@@ -199,17 +193,31 @@ class Location extends AbstractModel implements LocationInterface, IdentityInter
 
     /**
      * Specify a street address
+     *
+     * @param string $street
+     * @return mixed
      */
     public function setStreet($street)
     {
         $this->setData(self::STREET, $street);
     }
 
+    /**
+     * Get postcode
+     *
+     * @return mixed
+     */
     public function getPostcode()
     {
         return $this->getData(self::POSTCODE);
     }
 
+    /**
+     * Specify a postcode
+     *
+     * @param string $postcode
+     * @return mixed
+     */
     public function setPostcode($postcode)
     {
         $this->setData(self::POSTCODE, $postcode);

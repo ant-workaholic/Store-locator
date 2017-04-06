@@ -18,11 +18,6 @@ use Fastgento\Storelocator\Model\ResourceModel\Location\CollectionFactory as Loc
 class Map extends \Magento\Framework\View\Element\Template
     implements \Magento\Framework\DataObject\IdentityInterface
 {
-    const HOST = 'http://ipinfo.io/';
-
-    // This is a temporary test default data
-    //TODO: Should be deleted in future.
-    const DEFAULT_TEST_COUNTRY = 'Germany';
     /**
      * Options storage parameter
      *
@@ -88,7 +83,7 @@ class Map extends \Magento\Framework\View\Element\Template
         $this->_logger = $logger;
         $this->_storeManager = $storeManager;
         $this->_countryHelper = $countryHelper;
-        //$this->getCurrentCountryName();
+        $this->getCurrentCountryName();
         parent::__construct($context, $data);
     }
 
@@ -104,7 +99,7 @@ class Map extends \Magento\Framework\View\Element\Template
         $zoom = $this->_scopeConfig->getValue("fastgento/general/zoom");
         $lat = $this->_scopeConfig->getValue("fastgento/general/lat");
         $long = $this->_scopeConfig->getValue("fastgento/general/long");
-        $geolocation = $this->_scopeConfig->getValue("fastgento/general/geolocation");
+        $geoLocation = $this->_scopeConfig->getValue("fastgento/general/geolocation");
 
         $collection = $this->_collectionFactory->create();
 
@@ -127,8 +122,7 @@ class Map extends \Magento\Framework\View\Element\Template
             "lat"         => $lat,
             "long"        => $long,
             "markers"     => $markers,
-            "geolocation" => $geolocation,
-            //"country"     => //$this->getCurrentCountryName()
+            "geolocation" => $geoLocation
         );
         return json_encode($this->_options);
     }
@@ -140,37 +134,4 @@ class Map extends \Magento\Framework\View\Element\Template
     {
         return [\Fastgento\Storelocator\Model\Location::CACHE_TAG . '_' . "map"];
     }
-
-
-    //TODO: Need to move the functional to another place
-    //TODO: This code requires refactoring
-    public function getCurrentIp()
-    {
-        /** @return string */
-        /** @var \Magento\Framework\ObjectManagerInterface $om */
-        $om = \Magento\Framework\App\ObjectManager::getInstance();
-        /** @var \Magento\Framework\HTTP\PhpEnvironment\RemoteAddress $a */
-        $a = $om->get('Magento\Framework\HTTP\PhpEnvironment\RemoteAddress');
-        return $a->getRemoteAddress();
-    }
-
-    //TODO: Need to move the functional to another place
-    //TODO: This code requires refactoring
-    public function sendRequest()
-    {
-        $json = file_get_contents("http://ipinfo.io/95.164.52.228/geo");
-        $details = json_decode($json);
-        return $details;
-    }
-
-    /**
-     * @return mixed
-     */
-//    public function getCurrentCountryName()
-//    {
-//        $country = $this->_countryHelper
-//            ->loadByCode($this->_storeManager->getStore()->getConfig('general/country/default'))
-//            ->getName();
-//        return $country;
-//    }
 }
