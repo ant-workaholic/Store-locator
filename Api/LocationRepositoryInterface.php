@@ -50,4 +50,15 @@ interface LocationRepositoryInterface
      * @throws \Magento\Framework\Exception\LocalizedException
      */
     public function deleteById($locationId);
+
+    /**
+     * Get nearest locations.
+     *
+     * @api
+     * @param float $lat
+     * @param float $lng
+     * @param float $dst
+     * @return mixed
+     */
+    public function getNearestLocations($lat, $lng, $dst);
 }

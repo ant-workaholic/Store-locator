@@ -82,9 +82,9 @@ class Location extends AbstractModel implements LocationInterface, IdentityInter
      *
      * @return string
      */
-    public function getLongitude()
+    public function getLng()
     {
-        return $this->getData(self::LONGITUDE);
+        return $this->getData(self::LNG);
     }
 
     /**
@@ -92,9 +92,9 @@ class Location extends AbstractModel implements LocationInterface, IdentityInter
      *
      * @return string
      */
-    public function getLatitude()
+    public function getLat()
     {
-        return $this->getData(self::LATITUDE);
+        return $this->getData(self::LAT);
     }
 
     /**
@@ -125,9 +125,9 @@ class Location extends AbstractModel implements LocationInterface, IdentityInter
      * @param $longitude
      * @return \Fastgento\Storelocator\Api\Data\LocationInterface
      */
-    public function setLongitude($longitude)
+    public function setLng($longitude)
     {
-        return $this->setData(self::LONGITUDE, $longitude);
+        return $this->setData(self::LNG, $longitude);
     }
 
     /**
@@ -147,9 +147,9 @@ class Location extends AbstractModel implements LocationInterface, IdentityInter
      * @param $latitude
      * @return \Fastgento\Storelocator\Api\Data\LocationInterface
      */
-    public function setLatitude($latitude)
+    public function setLat($latitude)
     {
-        return $this->setData(self::LATITUDE, $latitude);
+        return $this->setData(self::LAT, $latitude);
     }
 
     /**
@@ -199,7 +199,7 @@ class Location extends AbstractModel implements LocationInterface, IdentityInter
      */
     public function setStreet($street)
     {
-        $this->setData(self::STREET, $street);
+        return $this->setData(self::STREET, $street);
     }
 
     /**
@@ -220,9 +220,50 @@ class Location extends AbstractModel implements LocationInterface, IdentityInter
      */
     public function setPostcode($postcode)
     {
-        $this->setData(self::POSTCODE, $postcode);
+        return $this->setData(self::POSTCODE, $postcode);
     }
 
+    /**
+     * Get an image
+     *
+     * @return mixed
+     */
+    public function getImage()
+    {
+        return $this->getData(self::IMAGE);
+    }
+
+    /**
+     * Specify an image
+     *
+     * @param $image
+     * @return $this
+     */
+    public function setImage($image)
+    {
+        return $this->setData(self::IMAGE, $image);
+    }
+
+    /**
+     * Get country id
+     *
+     * @return mixed
+     */
+    public function getCountryId()
+    {
+        return $this->getData(self::COUNTRY_ID);
+    }
+
+    /**
+     * Set country id
+     *
+     * @param $countryId
+     * @return $this
+     */
+    public function setCountryId($countryId)
+    {
+        return $this->setData(self::COUNTRY_ID, $countryId);
+    }
 
     /**
      * Get image url

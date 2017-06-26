@@ -22,17 +22,6 @@ class UpgradeSchema implements UpgradeSchemaInterface
     public function upgrade(SchemaSetupInterface $setup, ModuleContextInterface $context)
     {
         $setup->startSetup();
-        if (version_compare($context->getVersion(), '1.0.1', '<')) {
-            $setup->getConnection()->addColumn(
-                $setup->getTable('fastgento_locator'),
-                'image',
-                [
-                    'type'     => \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
-                    'nullable' => true,
-                    'comment'  => 'Location image attribute'
-                ]
-            );
-        }
         if (version_compare($context->getVersion(), '1.0.2', '<')) {
             /**
              * Drop entity Id columns

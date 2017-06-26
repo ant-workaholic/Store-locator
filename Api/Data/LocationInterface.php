@@ -12,14 +12,16 @@ interface LocationInterface
      */
     const ID          = 'id';
     const NAME        = 'name';
-    const LONGITUDE   = 'longitude';
-    const LATITUDE    = 'latitude';
+    const LNG         = 'lng';
+    const LAT         = 'lat';
     const DESCRIPTION = 'description';
     const STREET      = 'street';
     const REGION      = 'region';
     const POSTCODE    = 'postcode';
-    /**#@-*/
+    const IMAGE       = 'image';
+    const COUNTRY_ID  = 'country_id';
 
+    /**#@-*/
 
     /**
      * Get location id
@@ -40,7 +42,7 @@ interface LocationInterface
      *
      * @return string
      */
-    public function getLongitude();
+    public function getLng();
 
     /**
      * Get location description
@@ -54,7 +56,7 @@ interface LocationInterface
      *
      * @return string
      */
-    public function getLatitude();
+    public function getLat();
 
     /**
      * Set location id
@@ -78,7 +80,7 @@ interface LocationInterface
      * @param $longitude
      * @return \Fastgento\Storelocator\Api\Data\LocationInterface
      */
-    public function setLongitude($longitude);
+    public function setLng($longitude);
 
     /**
      * Set description location
@@ -94,20 +96,20 @@ interface LocationInterface
      * @param $latitude
      * @return \Fastgento\Storelocator\Api\Data\LocationInterface
      */
-    public function setLatitude($latitude);
+    public function setLat($latitude);
 
     /**
      * Set street data
      *
      * @param string $street
-     * @return mixed
+     * @return \Fastgento\Storelocator\Api\Data\LocationInterface
      */
     public function setStreet($street);
 
     /**
      * Retrieve street data
      *
-     * @return string
+     * @return \Fastgento\Storelocator\Api\Data\LocationInterface
      */
     public function getStreet();
 
@@ -115,7 +117,7 @@ interface LocationInterface
      * Specify region
      *
      * @param $region
-     * @return mixed
+     * @return \Fastgento\Storelocator\Api\Data\LocationInterface
      */
     public function setRegion($region);
 
@@ -129,7 +131,7 @@ interface LocationInterface
     /**
      * Set postcode
      *
-     * @return mixed
+     * @return \Fastgento\Storelocator\Api\Data\LocationInterface
      */
     public function setPostcode($postcode);
 
@@ -140,4 +142,34 @@ interface LocationInterface
      * @return mixed
      */
     public function getPostcode();
+
+    /**
+     * Retrieve a location image
+     *
+     * @return string
+     */
+    public function getImage();
+
+    /**
+     * Specify a location image
+     *
+     * @param $image
+     * @return \Fastgento\Storelocator\Api\Data\LocationInterface
+     */
+    public function setImage($image);
+
+    /**
+     * Set Country id
+     *
+     * @param $countryId
+     * @return mixed
+     */
+    public function setCountryId($countryId);
+
+    /**
+     * Get country id
+     *
+     * @return mixed
+     */
+    public function getCountryId();
 }

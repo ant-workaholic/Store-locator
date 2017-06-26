@@ -15,7 +15,7 @@
         </referenceContainer>
         <referenceContainer name="sidebar.main">
             <referenceBlock name="wishlist_sidebar" remove="true" />
-            <block class="Fastgento\Storelocator\Block\Locator\Item" name="locator.item.block" template="Fastgento_Storelocator::location.phtml"/>
+            <block class="Fastgento\Storelocator\Block\Locator\Item" name="locator.item.block" template="Fastgento_Storelocator::location.phtml" cacheable="false"/>
             <referenceBlock name="catalog.compare.sidebar" remove="true"/>
         </referenceContainer>
         <referenceContainer name="head.additional">

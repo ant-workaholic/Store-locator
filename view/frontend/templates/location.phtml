@@ -1,36 +1,18 @@
-<?php
-/**
- * @var $block \Fastgento\Storelocator\Block\Locator\Item
- */
-?>
-<?php $collection = $block->getAllLocations(); ?>
-<?php /** @var \Fastgento\Storelocator\Model\Location $item */ ?>
-<div class="verticalCarousel">
-    <div class="verticalCarouselHeader">
-        <h3><?php echo __("Locations"); ?></h3>
-        <a href="#" class="vc_goDown"><i class="fa fa-fw fa-angle-down"></i></a>
-        <a href="#" class="vc_goUp"><i class="fa fa-fw fa-angle-up"></i></a>
-    </div>
-    <ul class="verticalCarouselGroup vc_list location_info">
-        <?php foreach ($collection as $item): ?>
-            <li class="location_item">
-                <h1><a href="#"><?php echo $item->getName(); ?></a></h1>
-                <p>
-                    <?php echo $item->getDescription(); ?>
-                    <img src="<?php echo $item->getImageUrl(); ?>" />
-                </p>
-                <p>
-                    <?php echo $item->getStreet(); ?>
-                </p>
-            </li>
-        <?php endforeach ?>
-    </ul>
+<div id="m2-component" data-bind="scope:'locations'">
+    <!-- ko template: getTemplate() --><!-- /ko -->
+    <script type="text/x-magento-init">
+    {
+        "#m2-component": {
+            "Magento_Ui/js/core/app": {
+               "components": {
+                    "locations": {
+                        "component": "Fastgento_Storelocator/js/model/locations",
+                        "template" : "Fastgento_Storelocator/locations",
+                        "dataTest" : "dsdfsdfsdfsdfs"
+                    }
+                }
+            }
+        }
+    }
+    </script>
 </div>
-<script type="text/javascript">
-    requirejs(['jquery', 'scroll'], function($) {
-        $(".verticalCarousel").verticalCarousel({
-            currentItem: 1,
-            showItems: 2,
-        });
-    });
-</script>

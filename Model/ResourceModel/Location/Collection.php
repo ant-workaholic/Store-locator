@@ -37,4 +37,21 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
     }
 
 
+    /**
+     * Retrieve nearest locations
+     *
+     * @param $centerLat
+     * @param $centerLng
+     * @param $distance
+     * @return $this
+     */
+    public function getNearestLocations($centerLat, $centerLng, $distance)
+    {
+        $exprHaversine = "6371*acos(cos(radians($centerLat))*cos(radians(lat))*cos(radians(lng) - radians($centerLng)) + sin(radians($centerLat))*sin(radians(lat)))";
+        $this->getSelect()
+            ->columns(['distance' => new \Zend_Db_Expr($exprHaversine)])
+            ->having("distance < ?", $distance)
+            ->order("distance");
+        return $this;
+    }
 }

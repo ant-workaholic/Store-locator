@@ -4,19 +4,43 @@
  * See COPYING.txt for license details.
  */
 ?>
-<form class="form minisearch">
-    <div class="field search">
-        <label class="label" for="search" data-role="minisearch-label">
-            <span><?php echo __("Search Store"); ?></span>
-        </label>
-        <div class="control">
-            <input id="search" type="text" name="q" value="" placeholder="Search entire store here..." class="input-text" maxlength="128" role="combobox" aria-haspopup="false" aria-autocomplete="both" autocomplete="off">
-            <div id="search_autocomplete" class="search-autocomplete" style="display: none;"></div>
-        </div>
-        <div class="primary"><button type="submit" class="action login primary" name="send" id="map_search"><span><?php echo __("Search Store"); ?></span></button></div>
-    </div>
-</form>
-<?php /** @var $block \Fastgento\Storelocator\Block\Locator\Map */ ?>
-<div class="map-wrapper" data-mage-init='{"mapGoogle":<?php echo $block->getSerializedOptions();?>}'>
-    <div id="map"></div>
+<!--<form class="form minisearch">-->
+<!--    <div class="field search">-->
+<!--        <label class="label" for="search" data-role="minisearch-label">-->
+<!--            <span>--><?php //echo __("Search Store"); ?><!--</span>-->
+<!--        </label>-->
+<!--        <div class="control">-->
+<!--            <input id="location_search" type="text" name="q" value="" placeholder="Search entire store here..." class="input-text" maxlength="128" role="combobox" aria-haspopup="false" aria-autocomplete="both" autocomplete="off">-->
+<!--            <div id="search_autocomplete" class="search-autocomplete" style="display: none;"></div>-->
+<!--            <select id="radiusSelect" label="Radius">-->
+<!--                <option value="50" selected>50 kms</option>-->
+<!--                <option value="30">30 kms</option>-->
+<!--                <option value="20">20 kms</option>-->
+<!--                <option value="10">10 kms</option>-->
+<!--            </select>-->
+<!--            <div class="primary"><button type="submit" class="action login primary" name="send" id="map_search"><span>--><?php //echo __("Search Store"); ?><!--</span></button></div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</form>-->
+<?php ///** @var $block \Fastgento\Storelocator\Block\Locator\Map */ ?>
+<!--<div class="map-wrapper" data-mage-init='{"mapGoogle":--><?php //echo $block->getSerializedOptions();?><!--}'>-->
+<!--    <div id="map"></div>-->
+<!--</div>-->
+
+<div id="map-component" data-bind="scope:'map'">
+    <!-- ko template: getTemplate() --><!-- /ko -->
+    <script type="text/x-magento-init">
+    {
+        "#map-component": {
+            "Magento_Ui/js/core/app": {
+               "components": {
+                    "map": {
+                        "component": "Fastgento_Storelocator/js/model/map",
+                        "data" : <?php echo $block->getSerializedOptions();?>
+                    }
+                }
+            }
+        }
+    }
+    </script>
 </div>

@@ -3,9 +3,18 @@ namespace Fastgento\Storelocator\Model\Location;
 
 use Fastgento\Storelocator\Model\ResourceModel\Location\CollectionFactory;
 use Magento\Framework\View\Element\UiComponent\DataProvider\FilterPool;
+use Magento\Customer\Model\ResourceModel\Address\Attribute\Source\CountryWithWebsites;
+use Magento\Customer\Api\Data\AddressInterface;
+use Magento\Framework\App\ObjectManager;
+use Magento\Ui\Component\Form\Field;
 
 class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
 {
+    /**
+     * @var CountryWithWebsites
+     */
+    private $countryByWebsiteSource;
+
     /**
      * @var \Fastgento\Storelocator\Model\ResourceModel\Location\Collection
      */
@@ -69,4 +78,5 @@ class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
         }
         return $this->loadedData;
     }
+
 }

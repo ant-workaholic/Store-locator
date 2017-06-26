@@ -43,7 +43,7 @@
             </item>
         </argument>
     </dataSource>
-    <fieldset name="general">
+    <fieldset name="location">
         <argument name="data" xsi:type="array">
             <item name="config" xsi:type="array">
                 <item name="label" xsi:type="string" translate="true">General Information</item>
@@ -56,7 +56,7 @@
                     <item name="dataType" xsi:type="string">int</item>
                     <item name="label" xsi:type="string" translate="true">Store View</item>
                     <item name="formElement" xsi:type="string">multiselect</item>
-                    <item name="source" xsi:type="string">block</item>
+                    <item name="source" xsi:type="string">location</item>
                     <item name="dataScope" xsi:type="string">store_id</item>
                     <item name="default" xsi:type="string">0</item>
                     <item name="validation" xsi:type="array">
@@ -80,7 +80,7 @@
                 </item>
             </argument>
         </field>
-        <field name="latitude">
+        <field name="lat">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="dataType" xsi:type="string">text</item>
@@ -88,14 +88,14 @@
                     <item name="formElement" xsi:type="string">input</item>
                     <item name="source" xsi:type="string">location</item>
                     <item name="sortOrder" xsi:type="number">25</item>
-                    <item name="dataScope" xsi:type="string">latitude</item>
+                    <item name="dataScope" xsi:type="string">lat</item>
                     <item name="validation" xsi:type="array">
                         <item name="required-entry" xsi:type="boolean">true</item>
                     </item>
                 </item>
             </argument>
         </field>
-        <field name="longitude">
+        <field name="lng">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="dataType" xsi:type="string">text</item>
@@ -103,7 +103,7 @@
                     <item name="formElement" xsi:type="string">input</item>
                     <item name="source" xsi:type="string">location</item>
                     <item name="sortOrder" xsi:type="number">30</item>
-                    <item name="dataScope" xsi:type="string">longitude</item>
+                    <item name="dataScope" xsi:type="string">lng</item>
                     <item name="validation" xsi:type="array">
                         <item name="required-entry" xsi:type="boolean">true</item>
                     </item>
@@ -116,9 +116,24 @@
                     <item name="dataType" xsi:type="string">text</item>
                     <item name="label" xsi:type="string" translate="true">Description</item>
                     <item name="formElement" xsi:type="string">textarea</item>
-                    <item name="source" xsi:type="string">description</item>
+                    <item name="source" xsi:type="string">location</item>
                     <item name="sortOrder" xsi:type="number">35</item>
                     <item name="dataScope" xsi:type="string">description</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="region">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Region</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">region</item>
+                    <item name="sortOrder" xsi:type="number">25</item>
+                    <item name="dataScope" xsi:type="string">region</item>
                     <item name="validation" xsi:type="array">
                         <item name="required-entry" xsi:type="boolean">true</item>
                     </item>
@@ -140,15 +155,15 @@
                 </item>
             </argument>
         </field>
-        <field name="region">
+        <field name="country_id">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="dataType" xsi:type="string">text</item>
-                    <item name="label" xsi:type="string" translate="true">Region</item>
+                    <item name="label" xsi:type="string" translate="true">Country</item>
                     <item name="formElement" xsi:type="string">input</item>
-                    <item name="source" xsi:type="string">region</item>
-                    <item name="sortOrder" xsi:type="number">25</item>
-                    <item name="dataScope" xsi:type="string">region</item>
+                    <item name="source" xsi:type="string">country_id</item>
+                    <item name="sortOrder" xsi:type="number">80</item>
+                    <item name="dataScope" xsi:type="string">country_id</item>
                     <item name="validation" xsi:type="array">
                         <item name="required-entry" xsi:type="boolean">true</item>
                     </item>

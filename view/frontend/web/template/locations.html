@@ -1,0 +1,9 @@
+<div class="component-wrapper">
+    <ul data-bind="foreach: markers">
+        <li data-bind="click:$parent.clickHandler, style:{ border: $parent.active() == $data.name ? '1px solid #ccc' : '',  padding: '14px'}">
+            <span data-bind="text:name"></span>
+            <span data-bind="text:description"></span>
+            <img data-bind="attr:{src: image}"/>
+        </li>
+    </ul>
+</div>

@@ -23,7 +23,7 @@ class LocationRepository implements LocationRepositoryInterface
 
     protected $resource;
     protected $locationFactory;
-    protected $blockCollectionFactory;
+    protected $locationCollectionFactory;
     protected $searchResultsFactory;
     protected $dataObjectHelper;
     protected $dataLocationFactory;
@@ -53,7 +53,7 @@ class LocationRepository implements LocationRepositoryInterface
     ) {
         $this->resource = $resource;
         $this->locationFactory = $locationFactory;
-        $this->blockCollectionFactory = $locationCollectionFactory;
+        $this->locationCollectionFactory = $locationCollectionFactory;
         $this->searchResultsFactory = $searchResultsFactory;
         $this->dataObjectHelper = $dataObjectHelper;
         $this->dataLocationFactory = $dataLocationFactory;
@@ -121,7 +121,7 @@ class LocationRepository implements LocationRepositoryInterface
         $searchResults = $this->searchResultsFactory->create();
         $searchResults->setSearchCriteria($searchCriteria);
 
-        $collection = $this->blockCollectionFactory->create();
+        $collection = $this->locationCollectionFactory->create();
         foreach ($searchCriteria->getFilterGroups() as $filterGroup) {
             foreach ($filterGroup->getFilters() as $filter) {
                 if ($filter->getField() === 'store_id') {
@@ -144,21 +144,21 @@ class LocationRepository implements LocationRepositoryInterface
         }
         $collection->setCurPage($searchCriteria->getCurrentPage());
         $collection->setPageSize($searchCriteria->getPageSize());
-        $blocks = [];
+        $locations = [];
         /** @var Location $locationModel */
         foreach ($collection as $locationModel) {
             $locationData = $this->dataLocationFactory->create();
             $this->dataObjectHelper->populateWithArray(
                 $locationData,
                 $locationModel->getData(),
-                'Magento\Cms\Api\Data\BlockInterface'
+                'Fastgento\Storelocator\Api\Data\LocationInterface'
             );
-            $blocks[] = $this->dataObjectProcessor->buildOutputDataArray(
+            $locations[] = $this->dataObjectProcessor->buildOutputDataArray(
                 $locationData,
                 'Fastgento\Storelocator\Api\Data\LocationInterface'
             );
         }
-        $searchResults->setItems($blocks);
+        $searchResults->setItems($locations);
         return $searchResults;
     }
 
@@ -179,4 +179,30 @@ class LocationRepository implements LocationRepositoryInterface
         return $location;
     }
 
+    /**
+     * Retrieve a nearest shops.
+     *
+     * @param float $lat
+     * @param float $lng
+     * @return array
+     */
+    public function getNearestLocations($lat, $lng, $distance)
+    {
+        /** @var \Fastgento\Storelocator\Model\ResourceModel\Location\Collection $locations */
+        $locations = $this->locationCollectionFactory->create();
+        $result = $locations->getNearestLocations((float)$lat, (float)$lng, (float)$distance);
+
+        $data["items"] = [];
+        /** @var \Fastgento\Storelocator\Model\Location $item */
+        foreach ($result as $item) {
+            $data["items"][$item->getId()] = [
+                "name"        => $item->getName(),
+                "description" => $item->getDescription(),
+                "lat"         => $item->getLat(),
+                "lng"         => $item->getLng(),
+                "image"       => $item->getImageUrl()
+            ];
+        }
+        return $data;
+    }
 }

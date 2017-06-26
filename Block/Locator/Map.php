@@ -57,6 +57,7 @@ class Map extends \Magento\Framework\View\Element\Template
      */
     protected $_countryHelper;
 
+    protected $_directoryBlock;
     /**
      * Init collection factory
      *
@@ -74,7 +75,7 @@ class Map extends \Magento\Framework\View\Element\Template
         \Magento\Directory\Api\CountryInformationAcquirerInterface $countryInformation,
         \Psr\Log\LoggerInterface $logger,
         \Magento\Store\Model\StoreManagerInterface $storeManager,
-        \Magento\Directory\Model\Country $countryHelper
+        \Magento\Directory\Block\Data $directoryBlock
     ) {
         $this->_client = $client;
         $this->_collectionFactory = $collectionFactory;
@@ -82,8 +83,8 @@ class Map extends \Magento\Framework\View\Element\Template
         $this->_scopeConfig = $scopeConfig;
         $this->_logger = $logger;
         $this->_storeManager = $storeManager;
-        $this->_countryHelper = $countryHelper;
-        $this->getCurrentCountryName();
+        $this->_directoryBlock = $directoryBlock;
+
         parent::__construct($context, $data);
     }
 
@@ -107,8 +108,8 @@ class Map extends \Magento\Framework\View\Element\Template
         /** @var $location /Fastgento/Storelocator/Model/Location */
         foreach ($collection as $location) {
             $markers[] = array(
-                "latitude"    => (float)$location->getLatitude(),
-                "longitude"   => (float)$location->getLongitude(),
+                "latitude"    => (float)$location->getLat(),
+                "longitude"   => (float)$location->getLng(),
                 "title"       => $location->getName(),
                 "description" => $location->getDescription()
             );
@@ -122,7 +123,8 @@ class Map extends \Magento\Framework\View\Element\Template
             "lat"         => $lat,
             "long"        => $long,
             "markers"     => $markers,
-            "geolocation" => $geoLocation
+            "geolocation" => $geoLocation,
+            "url"         => $this->getUrl('rest/V1/locations'),
         );
         return json_encode($this->_options);
     }
@@ -133,5 +135,18 @@ class Map extends \Magento\Framework\View\Element\Template
     public function getIdentities()
     {
         return [\Fastgento\Storelocator\Model\Location::CACHE_TAG . '_' . "map"];
+    }
+
+    /**
+     * @param null|string $defValue
+     * @param string $name
+     * @param string $id
+     * @param string $title
+     * @return string
+     */
+    public function getCountryHtmlSelect($defValue = null, $name = 'country_id', $id = 'country', $title = 'Country')
+    {
+        $html = $this->_directoryBlock->getCountryHtmlSelect($defValue, $name, $id, $title);
+        return $html;
     }
 }

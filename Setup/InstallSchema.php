@@ -35,8 +35,8 @@ class InstallSchema implements InstallSchemaInterface
                  ['identity' => true, 'nullable' => false, 'primary' => true],
                  'Location ID'
              )->addColumn('name', \Magento\Framework\DB\Ddl\Table::TYPE_TEXT, 255, ['nullable'  => false,], 'Location Name')
-                 ->addColumn('longitude', \Magento\Framework\DB\Ddl\Table::TYPE_FLOAT, null, [], 'Longitude')
-                 ->addColumn('latitude', \Magento\Framework\DB\Ddl\Table::TYPE_FLOAT, null, [], 'Latitude')
+                 ->addColumn('lng', \Magento\Framework\DB\Ddl\Table::TYPE_FLOAT, null, [], 'Longitude')
+                 ->addColumn('lat', \Magento\Framework\DB\Ddl\Table::TYPE_FLOAT, null, [], 'Latitude')
                  ->addColumn('description', \Magento\Framework\DB\Ddl\Table::TYPE_TEXT, null, [], 'Description');
             $installer->getConnection()->createTable($table);
         }
